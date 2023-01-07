@@ -14,11 +14,14 @@
       <input id="add-task-input" class="todo__add__input" type="text" />
       <input
         id="add-task-button"
-        class="todo__add_button"
+        class="todo__add__submit"
         type="submit"
         value="Add"
       />
     </form>
-    <ul id="todo-container" class="todo__container"></ul>
+    <div id="task-display" class="todo__display">
+      <p id="empty-state-message">No tasks (yet)</p>
+      <ul id="task-container" class="todo__container"></ul>
+    </div>
   </body>
 </html>
