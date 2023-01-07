@@ -1,17 +1,24 @@
 /* document elements */
-const addTaskButton = document.getElementById("add-task");
+const addTaskButton = document.getElementById("add-task-button");
 
 /* event listeners */
-addTaskButton.addEventListener("click", addTask);
+addTaskButton.addEventListener("click", handleAddTask);
 
 const addTaskInput = document.getElementById("add-task-input");
+
+function handleAddTask() {
+  if (isValid(addTaskInput.value)) {
+    addTask();
+  } else {
+    generateErrorMessage();
+  }
+  addTaskInput.value = "";
+}
 
 function addTask() {
   const task = createTask();
   const todoContainer = document.getElementById("todo-container");
   todoContainer.appendChild(task);
-
-  addTaskInput.value = "";
 }
 
 function createTask() {
@@ -30,6 +37,26 @@ function createTask() {
   li.id = generateUuid();
 
   return li;
+}
+
+function isValid(taskInputText) {
+  return taskInputText.length > 0 && taskInputText.length <= 100;
+}
+
+function generateErrorMessage() {
+  const errorMessage = document.createElement("p");
+  errorMessage.innerText =
+    "Invalid input. Text must be between 1 and 100 characters long.";
+  errorMessage.id = "error-message";
+  errorMessage.classList.add("text--error");
+
+  const addTaskContainer = document.getElementById("add-task-container");
+  addTaskContainer.appendChild(errorMessage);
+
+  const messageDuration = 2000;
+  setTimeout(() => {
+    errorMessage.remove();
+  }, messageDuration);
 }
 
 function generateUuid() {
