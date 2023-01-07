@@ -10,11 +10,15 @@
     <script src="app.js" defer></script>
   </head>
   <body>
-    <section id="add-task-container" class="todo__add">
-      <h1>Add Task</h1>
-      <input id="add-task-input" type="text" />
-      <button id="add-task-button">Add</button>
-    </section>
+    <form id="add-task-container" class="todo__add__container">
+      <input id="add-task-input" class="todo__add__input" type="text" />
+      <input
+        id="add-task-button"
+        class="todo__add_button"
+        type="submit"
+        value="Add"
+      />
+    </form>
     <section>
       <h1>Tasks</h1>
       <ul id="todo-container" class="todo__container"></ul>

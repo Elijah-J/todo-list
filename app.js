@@ -1,12 +1,12 @@
 /* document elements */
-const addTaskButton = document.getElementById("add-task-button");
+const addTaskInput = document.getElementById("add-task-input");
+const addTaskContainer = document.getElementById("add-task-container");
 
 /* event listeners */
-addTaskButton.addEventListener("click", handleAddTask);
+addTaskContainer.addEventListener("submit", handleAddTask);
 
-const addTaskInput = document.getElementById("add-task-input");
-
-function handleAddTask() {
+function handleAddTask(event) {
+  event.preventDefault();
   if (isValid(addTaskInput.value)) {
     addTask();
   } else {
