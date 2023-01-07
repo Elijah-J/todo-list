@@ -1,3 +1,7 @@
 .text--error {
   color: red;
 }
+
+.text--hidden {
+  display: none;
+}
