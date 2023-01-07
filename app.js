@@ -1,13 +1,11 @@
-/* document elements */
-const addTaskInput = document.getElementById("add-task-input");
 const addTaskContainer = document.getElementById("add-task-container");
-
-/* event listeners */
 addTaskContainer.addEventListener("submit", handleAddTask);
+
+const addTaskInput = document.getElementById("add-task-input");
 
 function handleAddTask(event) {
   event.preventDefault();
-  if (isValid(addTaskInput.value)) {
+  if (isValid(addTaskInput.value.trim())) {
     addTask();
   } else {
     generateErrorMessage();
@@ -27,7 +25,7 @@ function createTask() {
 
   checkbox.type = "checkbox";
 
-  const taskText = document.createTextNode(addTaskInput.value);
+  const taskText = document.createTextNode(addTaskInput.value.trim());
   const removeTaskButton = document.createElement("button");
   removeTaskButton.innerText = "Remove";
 
