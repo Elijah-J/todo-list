@@ -1,5 +1,9 @@
+:root {
+  --color-error: #cc0000;
+}
+
 .text--error {
-  color: red;
+  color: var(--color-error);
 }
 
 .text--hidden {
