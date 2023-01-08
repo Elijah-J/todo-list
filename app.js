@@ -22,17 +22,6 @@ function handleAddTask(event) {
   addTaskInput.value = "";
 }
 
-function removeEmptyStateMessage() {
-  emptyStateMessage.classList.add("text--hidden");
-}
-
-const taskContainer = document.querySelector("#task-container");
-
-function addTask() {
-  const task = createTask();
-  taskContainer.appendChild(task);
-}
-
 function createTask() {
   const li = document.createElement("li");
   const checkbox = document.createElement("input");
@@ -55,6 +44,15 @@ function isValid(taskInputText) {
   return taskInputText.length > 0 && taskInputText.length <= 100;
 }
 
+function addTask() {
+  const task = createTask();
+  taskContainer.appendChild(task);
+}
+
+function getTaskCount() {
+  return document.querySelector("#task-container").childElementCount;
+}
+
 function generateErrorMessage() {
   const errorMessage = document.createElement("p");
   errorMessage.innerText =
@@ -70,9 +68,11 @@ function generateErrorMessage() {
   }, messageDuration);
 }
 
-function getTaskCount() {
-  return document.querySelector("#task-container").childElementCount;
+function removeEmptyStateMessage() {
+  emptyStateMessage.classList.add("text--hidden");
 }
+
+const taskContainer = document.querySelector("#task-container");
 
 function generateUuid() {
   return "id" + Math.random().toString(16).slice(2);
