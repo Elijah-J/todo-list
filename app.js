@@ -22,6 +22,18 @@ function handleAddTask(event) {
   addTaskInput.value = "";
 }
 
+function handleRemoveTask(event) {
+  removeTask(event);
+
+  if (getTaskCount() === 0) {
+    emptyStateMessage.classList.remove("text--hidden");
+  }
+}
+
+function removeTask(event) {
+  event.target.parentElement.remove();
+}
+
 function createTask() {
   const li = document.createElement("li");
   const checkbox = document.createElement("input");
@@ -31,6 +43,8 @@ function createTask() {
   const taskText = document.createTextNode(addTaskInput.value.trim());
   const removeTaskButton = document.createElement("button");
   removeTaskButton.innerText = "Remove";
+  removeTaskButton.classList.add("display__button--remove");
+  removeTaskButton.addEventListener("click", handleRemoveTask);
 
   li.appendChild(checkbox);
   li.appendChild(taskText);
